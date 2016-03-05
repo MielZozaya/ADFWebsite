@@ -1,0 +1,317 @@
+@charset "UTF-8";
+body {
+    font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+    background: #CCC;
+    margin: 0;
+    padding: 0;
+    color: #000;
+}
+
+/* ~~ Element/tag selectors ~~ */
+ul, ol, dl { 
+    padding: 0;
+    margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+    margin-top: 0;	 /* removing the top margin gets around an issue where margins can escape from their containing div. The remaining bottom margin will hold it away from any elements that follow. */
+    padding-right: 15px;
+    padding-left: 15px; /* adding the padding to the sides of the elements within the divs, instead of the divs themselves, gets rid of any box model math. A nested div with side padding can also be used as an alternate method. */
+
+}
+
+h1, h2, h3, h4{
+    color: #0033ff;
+}
+a img { /* this selector removes the default blue border displayed in some browsers around an image when it is surrounded by a link */
+        border: none;
+}
+
+/* ~~ Styling for your site's links must remain in this order - including the group of selectors that create the hover effect. ~~ */
+a:link {
+    color:#414958;
+    text-decoration: underline; /* unless you style your links to look extremely unique, it's best to provide underlines for quick visual identification */
+}
+
+a, a:visited, a:active, a:focus { /* this group of selectors will give a keyboard navigator the same hover experience as the person using a mouse. */
+                                text-decoration: none;
+                                color: blue;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
+th{
+    background-color: #0066ff;
+}
+
+/* ~~ this container surrounds all other divs giving them their percentage-based width ~~ */
+.exteriorcontainer{
+    width: 83%;
+    background: #FFF;
+    max-width: 1260px;
+    min-width: 1000px;
+    margin: 0 auto;
+}
+div.container {
+    padding: 1.5em;
+    max-width: 1260px;/* a max-width may be desirable to keep this layout from getting too wide on a large monitor. This keeps line length more readable. IE6 does not respect this declaration. */
+    min-width: 780px;/* a min-width may be desirable to keep this layout from getting too narrow. This keeps line length more readable in the side columns. IE6 does not respect this declaration. */
+    background: #FFF;
+    margin: 0 auto; /* the auto value on the sides, coupled with the width, centers the layout. It is not needed if you set the .container's width to 100%. */
+}
+
+/* ~~the header is not given a width. It will extend the full width of your layout. It contains an image placeholder that should be replaced with your own linked logo~~ */
+div.header {
+    background-image:url(img/ADFHeaderBackground.jpg) ;
+    background-repeat:repeat-x;
+    height: 150px;
+}
+
+.floatleft{
+    float:left;
+}
+
+.floatright{
+    float:right;
+}
+
+/* MENUBAR */
+#menubar{
+    margin-top: 1em;
+    width: 100%;
+    background-image:url(img/menuItemInactive.jpg);
+    background-repeat:repeat-x;
+}
+
+#menubar:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+#menubar li{
+    display:inline;
+}
+#menubar li a{
+    text-decoration: none;
+    float: left;
+    min-width: 10%;
+    height: 35px;
+    margin: 0;
+    padding-top: 16px;
+    padding-left: 0;
+    padding-right: 0;
+    border-right:thin solid #FFF;
+    font-style:normal;
+    font-size:16px;
+    text-align:center;
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+#menubar .floatleft{
+    border-right: thin solid #FFF;
+}
+
+#menubar .floatright{
+    border-left: thin solid #FFF;
+}
+
+.menuitemInactive a{
+    text-decoration: none;
+    background-image:url(img/menuItemInactive.jpg);
+    background-repeat:repeat-x;
+    color: #000;
+}
+
+.menuitemInactive a:hover{
+    text-decoration: none;
+    background-color: #0066cc;
+    background-image:url(img/menuItemSelected.jpg);
+    background-repeat:repeat-x;
+    color:#FFF;
+}
+
+.menuitemActive a{
+    text-decoration: none;
+    background-image:url(img/menuItemActive.jpg);
+    background-repeat:repeat-x;
+    color: #FFF;
+}
+
+
+
+/* ~~ This is the layout information. ~~ 
+
+1) Padding is only placed on the top and/or bottom of the div. The elements within this div have padding on their sides. This saves you from any "box model math". Keep in mind, if you add any side padding or border to the div itself, it will be added to the width you define to create the *total* width. You may also choose to remove the padding on the element in the div and place a second div within it with no width and the padding necessary for your design.
+
+*/
+
+/*Exercise Menu*/
+
+#exerciseMenu{
+    border-bottom: thin solid #000;
+}
+
+#exerciseMenu:after{
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+#exerciseMenu li{
+    display: inline;
+}
+#exerciseMenu li p{
+    float: left;
+    font-size: 20px;
+    margin:0;
+    padding:0;
+}
+#exerciseMenu li a{
+    text-decoration: none;
+    float: left;
+    width: 13%;
+    height: 20px;
+    margin: 0;
+    padding-top: 5px;
+    padding-left: 0;
+    padding-right: 0;
+    font-style:normal;
+    font-size:14px;
+    text-align:center;
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+#exerciseMenu li a.exerciseMenuItemInactive {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#exerciseMenu li a:hover.exerciseMenuItemInactive{
+    color: white;
+    background-color: #3333ff;
+}
+
+#exerciseMenu li a.exerciseMenuItemActive{
+    color: white;
+    background-color: #1B1D6B;
+}
+
+/* Sidebar */
+#sidebar {
+    margin-top: 2em;
+    margin-left: 0.5em;
+    float: left;
+    width: 17%;
+    border:thin solid #1B1D6B;
+    margin-right: 1em;
+    border-bottom: none;
+}
+
+#sidebar h5{
+    margin:0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size:14px;
+    background-image:url(img/menuItemInactive.jpg);
+    background-repeat:repeat-x;
+    border-bottom: thin solid #1B1D6B;
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+#sidebar ul{
+    list-style: none;
+}
+
+#sidebar li{
+    display: inline;}
+
+#sidebar li a{
+    text-decoration: none;
+    display:block;
+    padding: 3px;
+    min-height: 30px;
+    border-bottom: thin solid #1B1D6B;
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+.sidebarItemInactive a{
+    color:#009;
+
+    background-color: #ffffff;
+}
+
+.sidebarItemInactive a:hover{
+    background-image:url(img/menuItemInactive.jpg);
+    background-repeat:repeat-x;
+    color:#FFF;
+    background-color: #6699ff;
+}
+
+.sidebarItemActive a{
+    background-image:url(img/menuItemActive.jpg);
+    background-repeat:repeat-x;
+    color: #FFF;
+}
+
+/*Content with sidebar*/
+.sidebar_content{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    float: left;
+    width: 80%;
+}
+
+/*content without sidebar*/
+.nosidebar_content{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}
+.content {
+    border: thin solid #1B1D6B;
+    padding: 10px 0;
+}
+
+/* ~~ This grouped selector gives the lists in the .content area space ~~ */
+.content ul, .content ol { 
+    padding: 0 15px 15px 40px; /* this padding mirrors the right padding in the headings and paragraph rule above. Padding was placed on the bottom for space between other elements on the lists and on the left to create the indention. These may be adjusted as you wish. */
+}
+
+/* ~~ The footer ~~ */
+div.footer {
+    padding: 10px 0;
+    font-size: 11px;
+    color: #000000;
+    text-align: center;
+    background-image: url(img/footerBackground.jpg);
+    background-repeat: repeat-x;
+}
+
+.footer a{
+    text-decoration: underline;
+}
+
+/* ~~ miscellaneous float/clear classes ~~ */
+.fltrt {  /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+          float: right;
+          margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page. The floated element must precede the element it should be next to on the page. */
+          float: left;
+          margin-right: 8px;
+}
+.clearfloat { /* this class can be placed on a <br /> or empty div as the final element following the last floated div (within the #container) if the #footer is removed or taken out of the #container */
+              clear:both;
+              height:0;
+              font-size: 1px;
+              line-height: 0px;
+}
