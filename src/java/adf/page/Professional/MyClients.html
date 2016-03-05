@@ -1,0 +1,29 @@
+<wicket:extend>
+    <h1 style="text-align: center;"> My Clients </h1>
+    <h2><span wicket:id="noClients"></span></h2>
+    <span wicket:id="clientTable">
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Self-Help Support</th>
+                    <th>Contact</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr wicket:id="clients">
+                    <td wicket:id="username">[Username]</td>
+                    <td><a href="#" wicket:id="exercises"> See Answers </a></td>
+                    <td><a href="#" wicket:id="sendMessage"> Send Message </a></td>
+                </tr>
+            </tbody>
+        </table>
+    </span>
+    <h3> Send a invitation: </h3>
+    <form wicket:id="sendInvitation">
+        <span wicket:id="feedback"/>
+
+        <p>Email: <input wicket:id="email"/> </p>
+        <input type="submit" value="send"/>
+    </form>
+</wicket:extend>

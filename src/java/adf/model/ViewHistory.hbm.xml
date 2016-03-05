@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- ID: 1054920 -->
+<hibernate-mapping package="adf.model">
+  <class name="ViewHistory" table="view_history">
+    <composite-id class="ViewHistoryId" name="id">
+      <key-property column="startDate" name="startDate"/>
+      <key-property column="username" name="username"/>
+    </composite-id>
+    <version column="version" name="version"/>
+    <property column="endDate" name="endDate" not-null="true"/>
+    <property column="pageUrl" name="pageUrl" not-null="true"/>
+  </class>
+</hibernate-mapping>

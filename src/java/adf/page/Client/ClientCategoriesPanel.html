@@ -1,0 +1,20 @@
+<wicket:panel>
+    <h1>List of Categories:</h1>
+    <ul>
+        <li wicket:id="categories">
+            <a href="#" wicket:id="categoryLink">
+                <span wicket:id="categoryName"/>
+            </a>
+            <button wicket:id="deleteCategory" >delete</button>
+        </li>
+    </ul>
+
+    <form wicket:id="addCategory">
+        <h4>Create new category:</h4>
+        <span wicket:id="feedback"/>
+        <div class="clearfloat"/>
+            Name: <input wicket:id="catName"/>
+            Description: <input wicket:id="catDesc"/>
+            <input type="submit" value="Create"/>
+    </form>
+</wicket:panel>

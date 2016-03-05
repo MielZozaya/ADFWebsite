@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:wicket="http://wicket.apache.org/"
+    xml:lang="en"
+    lang="en">
+
+    <head>
+        <title>Send Message</title>
+    </head>
+    <body>
+        <span wicket:id="adfBorder">
+            <h1 style="text-align: center;">Send Message</h1>
+            <span wicket:id="feedback">Feedback panel</span>
+            <form wicket:id="Message">
+
+                    <p style="font-weight: bold;">Body:</p><textarea style="width: 90%; margin-left: 5%" wicket:id="messageBody" rows="7" cols="20"></textarea>
+
+                    <input type="submit" value="Send"/>
+                </form>
+        </span>
+    </body>
+</html>

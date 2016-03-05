@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="adf.model">
+  <class name="Demographics" table="demographics">
+    <id column="demographics_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property name="gender"/>
+    <property name="occupation"/>
+    <property name="ethnicity"/>
+    <property name="religion"/>
+    <property name="country"/>
+    <property name="problemDuration"/>
+    <property name="typeOfProblem"/>
+    <property name="isRelativeMisUsing"/>
+    <property name="relativesGender"/>
+    <property name="convivienceDuration"/>
+    <property name="relationWithAdict"/>
+    <property name="relativesAge"/>
+    <property name="adictionChangeIn3Months"/>
+  </class>
+</hibernate-mapping>

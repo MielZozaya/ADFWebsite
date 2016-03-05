@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="adf.model">
+    <class name="AdfUser" table="adf_user">
+        <id name="username" column="username" />
+        <version name="version" column="version"/>
+        <property name="nickname" column="nickname"/>
+        <property name="professionalLevel" column="professionalLevel" not-null="true"/>
+        <property name="email" column="email" not-null="true"/>
+        <property name="phoneNum" column="phoneNum" not-null="true"/>
+        <property name="password" column="password" not-null="true"/>
+        <many-to-one class="Address" name="address" column="address" unique="true" lazy="false" cascade="all"/>
+        <many-to-one class="Role" name="role" column="role" lazy="false" cascade="all"/>
+        <set name="recievedMessages" cascade="all-delete-orphan" inverse="true" lazy="true" table="notifications">
+            <key column="receiver"/>
+            <one-to-many class="InboxMessage"/>
+        </set>
+        <set name="sentMessages" cascade="all-delete-orphan" inverse="true" lazy="true" table="notifications">
+            <key column="sender"/>
+            <one-to-many class="InboxMessage"/>
+        </set>
+        <set name="clients" lazy="true" inverse="true" cascade="save-update">
+            <key column="professional"/>
+            <one-to-many class="AdfUser"/>
+        </set>
+        <many-to-one class="AdfUser" name="professional" column="professional" lazy="false" cascade="all"/>
+        <many-to-one class="ADFProgramAnswers" name="adfProgramAnswers" lazy="false" unique="true" cascade="all"/>
+        <property name="denyProfessionalContact"/>
+        <property name="denyProfessionalSupervising"/>
+        <property name="postContactable"/>
+        <many-to-one class="Demographics" name="demographics" unique="true" lazy="false" cascade="all"/>
+        <many-to-one class="ProfessionalLoginPetitionForm" name="professionalLoginPetitionForm" unique="true" lazy="false" cascade="all"/>
+        <property name="creationDate" column="creationDate"/>
+        <property name="enabled" column="account_enabled"/>
+        <property name="accountNonExpired" column="account_non_expired" not-null="true"/>
+        <property name="accountNonLocked" column="account_non_locked" not-null="true"/>
+        <property name="credentialsNonExpired" column="credentials_non_expired" not-null="true"/>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<wicket:extend>
+    <h1>Registration</h1>
+    <div style="margin: 1em;">
+        <form wicket:id="registrationForm">
+        <span wicket:id="feedback"></span>
+            <p>Username: <input type="text" wicket:id="username"/></p>
+            <div class="clearfloat"></div>
+            <p>Email: <input type="text" wicket:id="email"/></p>
+            <div class="clearfloat"></div>
+            <p>Enter the email again: <input type="text" wicket:id="reEmail"/></p>
+            <div class="clearfloat"></div>
+            <p>Telephone <input type="text" wicket:id="telephone"/></p>
+            <div class="clearfloat"></div>
+            <img wicket:id="captchaImage"/>
+            <div class="clearfloat"></div>
+            <p>Insert the text on the image here: <input type="text" wicket:id="password"/></p>
+            <div class="clearfloat"></div>
+            <input type="submit" value="continue"/>
+        </form>
+    </div>
+</wicket:extend>

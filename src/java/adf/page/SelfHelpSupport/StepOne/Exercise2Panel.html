@@ -1,0 +1,40 @@
+<wicket:panel>
+    <form wicket:id="form">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th rowspan="0">Stressful behaviour of my relative</th>
+                    <th rowspan="0">How I feel about this</th>
+                    <th rowspan="0">How my family feels about this</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>e.g. My husband does not spend time with us in the evenings</td>
+                    <td><font face="Verdana">Angry and upset&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></td>
+                    <td>Neglected and abandoned&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                </tr>
+                <tr>
+                    <td>e.g. My daughter steals money to fund her drug use</td>
+                    <td>That I have to give her money so that she won't steal. Then she might not get caught</td>
+                    <td>Angry that I have to give money&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: center;">- - - - - Personal Answers - - - - -</td>
+                </tr>
+                <tr wicket:id="currentAnswers">
+                    <td wicket:id="question1">[Question1]</td>
+                    <td wicket:id="question2">[Question2]</td>
+                    <td wicket:id="question3">[Question3]</td>
+                </tr>
+                <tr>
+                    <td><textarea rows="4" cols="15" style="width: 97%; height: 100%" wicket:id="answer1"></textarea></td>
+                    <td><textarea rows="4" cols="15" style="width: 97%; height: 100%" wicket:id="answer2"></textarea></td>
+                    <td><textarea rows="4" cols="15" style="width: 97%; height: 100%" wicket:id="answer3"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <span wicket:id="feedback"/>
+        <input type="submit" wicket:id="submitButton" style="float: right;"/>
+    </form>
+</wicket:panel>

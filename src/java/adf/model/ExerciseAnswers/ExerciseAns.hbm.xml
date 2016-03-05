@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="adf.model.ExerciseAnswers">
+  <class name="Exercise1Ans" table="exercise_1_ans">
+    <id column="exercise_1_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="option1" name="option1" not-null="true"/>
+    <property column="option2" name="option2" not-null="true"/>
+    <property column="option3" name="option3" not-null="true"/>
+    <property column="option4" name="option4" not-null="true"/>
+    <property column="option5" name="option5" not-null="true"/>
+    <property column="option6" name="option6" not-null="true"/>
+    <property column="option7" name="option7" not-null="true"/>
+    <property column="option8" name="option8" not-null="true"/>
+    <property column="option9" name="option9" not-null="true"/>
+  </class>
+  <class name="Exercise2Ans" table="exercise_2_ans">
+    <id column="exercise_2_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+    <property column="question3" name="question3"/>
+  </class>
+  <class name="Exercise3Ans" table="exercise_3_ans">
+    <id column="exercise_3_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+    <property column="question3" name="question3"/>
+  </class>
+  <class name="Exercise4Ans" table="exercise_4_ans">
+    <id column="exercise_4_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+  </class>
+  <class name="Exercise5aAns" table="exercise_5a_ans">
+    <id column="exercise_5a_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+    <property column="question3" name="question3"/>
+  </class>
+  <class name="Exercise5bAns" table="exercise_5b_ans">
+    <id column="exercise_5b_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+    <property column="question3" name="question3"/>
+  </class>
+  <class name="Exercise6Ans" table="exercise_6_ans">
+    <id column="exercise_6_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+    <property column="question3" name="question3"/>
+  </class>
+  <class name="Exercise7Ans" table="exercise_7_ans">
+    <id column="exercise_7_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+    <property column="question3" name="question3"/>
+    <property column="question4" name="question4"/>
+    <property column="question5" name="question5"/>
+  </class>
+  <class name="Exercise8Ans" table="exercise_8_ans">
+    <id column="exercise_8_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+    <property column="question3" name="question3"/>
+    <property column="question4" name="question4"/>
+  </class>
+  <class name="Exercise9aAns" table="exercise_9a_ans">
+    <id column="exercise_9a_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+  </class>
+  <class name="Exercise9bAns" table="exercise_9b_ans">
+    <id column="exercise_9b_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+  </class>
+  <class name="Exercise9cAns" table="exercise_9c_ans">
+    <id column="exercise_9c_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+  </class>
+  <class name="Exercise10Ans" table="exercise_10_ans">
+    <id column="exercise_10_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="supportive" name="supportive"/>
+    <property column="non_suportive" name="non_suportive"/>
+  </class>
+  <class name="Exercise11Ans" table="exercise_11_ans">
+    <id column="exercise_11_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+  </class>
+  <class name="Exercise12Ans" table="exercise_12_ans">
+    <id column="exercise_12_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="question1" name="question1"/>
+    <property column="question2" name="question2"/>
+  </class>
+</hibernate-mapping>

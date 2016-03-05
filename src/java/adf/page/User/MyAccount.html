@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:wicket="http://wicket.apache.org/"
+    xml:lang="en"
+    lang="en">
+
+    <head>
+        <title>MyAccount</title>
+    </head>
+    <body>
+        <span wicket:id="adfBorder">
+            <h1 style="text-align: center;">My Account</h1>
+
+            <span wicket:id="feedback"></span>
+            <h3>Change Password</h3>
+            <form style="width: 90%; margin-left: 5%;" wicket:id="passwordChange">
+                <fieldset>
+                    <p>
+                        Old password: <input type="password" wicket:id="oldPassword"/>
+                    </p>
+                    <p>
+                        New password: <input type="password" wicket:id="newPassword"/>
+                    </p>
+                    <p>
+                        Enter New password again: <input type="password" wicket:id="reEnterNewPassword"/>
+                    </p>
+                    <input type="submit" value="Change"/>
+                </fieldset>
+            </form>
+
+            <h3>Chagnce Forum Nickname</h3>
+            <form style="width: 90%; margin-left: 5%;" wicket:id="nicknameChange">
+                <fieldset>
+                    <p>
+                        Nickname: <input type="text" wicket:id="nickname"/>
+                    </p>
+                    <input type="submit" value="Change"/>
+                </fieldset>
+            </form>
+
+            <span wicket:id="supervisorcontainer" >
+                <h3>Supervisor Privacy</h3>
+                <div style="width: 90%; margin-left: 5%; border: thin solid blue;">
+                    <p>
+                        <input type="checkbox" wicket:id="denyContact"></input> Deny my supervisor to contact me.
+                    </p>
+                    <p>
+                        <input type="checkbox" wicket:id="denySupervising"></input> Deny my supervisor to see the answers to my exercises.
+                    </p>
+                </div>
+            </span>
+            <div class="clearfloat">
+
+            </div>
+        </span>
+    </body>
+</html>

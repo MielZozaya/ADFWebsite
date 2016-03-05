@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="adf.model">
+  <class name="Tool" optimistic-lock="version">
+    <id column="tool_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <property name="version"/>
+    <property name="name"/>
+    <property name="description"/>
+    <property name="src"/>
+  </class>
+</hibernate-mapping>

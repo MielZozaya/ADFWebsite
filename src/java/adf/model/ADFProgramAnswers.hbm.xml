@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="adf.model">
+  <class name="ADFProgramAnswers" table="adf_program_answers">
+    <id column="adf_program_answers_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="exercise1" lazy="true" name="exercise1Ans"/>
+    <list cascade="save-update" lazy="true" name="exercise2AnsList" table="answers_exercise2">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise2Ans"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise3AnsList" table="answers_exercise3">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise3Ans"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise4AnsList" table="answers_exercise4">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise4Ans"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise5aAnsList" table="answers_exercise5a">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise5aAns"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise5bAnsList" table="answers_exercise5b">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise5bAns"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise6AnsList" table="answers_exercise6">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise6Ans"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise7AnsList" table="answers_exercise7">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise7Ans"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise8AnsList" table="answers_exercise8">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise8Ans"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise9aAnsList" table="answers_exercise9a">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise9aAns"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise9bAnsList" table="answers_exercise9b">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise9bAns"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise9cAnsList" table="answers_exercise9c">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise9cAns"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise10AnsList" table="answers_exercise10">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise10Ans"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise11AnsList" table="answers_exercise11">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise11Ans"/>
+    </list>
+    <list cascade="save-update" lazy="true" name="exercise12AnsList" table="answers_exercise12">
+      <key column="id"/>
+      <list-index column="idx"/>
+      <one-to-many class="adf.model.ExerciseAnswers.Exercise12Ans"/>
+    </list>
+  </class>
+</hibernate-mapping>

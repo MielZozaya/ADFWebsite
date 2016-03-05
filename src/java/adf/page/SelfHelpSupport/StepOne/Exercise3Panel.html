@@ -1,0 +1,36 @@
+<wicket:panel>
+    <form wicket:id="form">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th rowspan="0">Health problems I have</th>
+                    <th rowspan="0">How I feel about this</th>
+                    <th rowspan="0">How my family feels about this</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><font face="Verdana">e.g. I cannot sleep at night</font></td>
+                    <td><font face="Verdana">Exhausted. I lose my temper easily</font></td>
+                    <td><font face="Verdana">My children do not understand why I lose my temper</font></td>
+                </tr>
+
+                <tr>
+                    <td colspan="3" style="text-align: center;">- - - - - Personal Answers - - - - -</td>
+                </tr>
+                <tr wicket:id="currentAnswers">
+                    <td wicket:id="question1">[Question1]</td>
+                    <td wicket:id="question2">[Question2]</td>
+                    <td wicket:id="question3">[Question3]</td>
+                </tr>
+                <tr>
+                    <td><textarea rows="4" style="width: 97%; height: 100%" wicket:id="answer1"></textarea></td>
+                    <td><textarea rows="4" style="width: 97%; height: 100%" wicket:id="answer2"></textarea></td>
+                    <td><textarea rows="4" style="width: 97%; height: 100%" wicket:id="answer3"></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <span wicket:id="feedback"/>
+        <input type="submit" wicket:id="submitButton" style="float: right;"/>
+    </form>
+</wicket:panel>

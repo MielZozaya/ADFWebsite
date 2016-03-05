@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="adf.model">
+  <class name="ClientForumMessage" table="client_ForumMessages">
+    <id column="forumMessage_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <set cascade="save-update, delete" lazy="false" name="categories" table="clientforumessages_categories_relation">
+      <key column="forumMessage_id"/>
+      <many-to-many class="ClientCategory"/>
+    </set>
+    <property column="title" name="title" not-null="true"/>
+    <property column="message" name="message" not-null="true"/>
+    <property column="date" name="date" not-null="true"/>
+    <many-to-one cascade="all" class="AdfUser" column="sender" lazy="false" name="sender"/>
+    <list cascade="all-delete-orphan" lazy="false" name="children">
+      <key column="parent"/>
+      <list-index column="idx"/>
+      <one-to-many class="ClientForumMessage"/>
+    </list>
+    <many-to-one class="ClientForumMessage" column="parent" insert="false" name="parent"/>
+  </class>
+</hibernate-mapping>

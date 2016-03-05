@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="adf.model">
+  <class name="Address" table="address">
+    <id column="address_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="line1" name="line1" not-null="true"/>
+    <property column="line2" name="line2"/>
+    <property column="line3" name="line3"/>
+    <property column="line4" name="line4"/>
+    <property column="city" name="city" not-null="true"/>
+    <property column="country" name="country" not-null="true"/>
+    <property column="postcode" name="postcode" not-null="true"/>
+  </class>
+</hibernate-mapping>

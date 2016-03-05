@@ -1,0 +1,38 @@
+<wicket:extend>
+    <h1 style="text-align: center">ADMINISTRATE TOOLS</h1>
+    <h2>Tools offered:</h2>
+    <p>
+        Files stored in: <span wicket:id="dir"></span>
+    </p>
+    <ul style="list-style-image: none;list-style-type: none;">
+        <li style="border: solid thin blue;" wicket:id="tools">
+            <h5><span wicket:id="name"></span></h5>
+            <div style="padding-left: 1em;">
+                <p style="padding-left: 1em;">
+                    <span wicket:id="description"></span> <button wicket:id="download">Download!</button>  <a href="#" wicket:id="remove"> Remove </a>
+                </p>
+                
+            </div>
+        </li>
+    </ul>
+
+
+    <h2>Upload a new tool: </h2>
+    <form wicket:id="uploadForm">
+        <fieldset>
+            <p>
+                Name: <input wicket:id="name"/>
+            </p>
+            <p>
+                Description: <textarea style="width: 80%; margin-left: 10%;" cols="20" rows="7" wicket:id="description"></textarea>
+            </p>
+            <p>
+                <label for="upload">File</label>
+                <input wicket:id="fileInput" id="upload" type="file"/>
+            </p>
+            <input type="submit" value="Upload!"/>
+            <span wicket:id="progress">[[ajax upload progressbar]]</span>
+            <span wicket:id="feedback"/>
+        </fieldset>
+    </form>
+</wicket:extend>

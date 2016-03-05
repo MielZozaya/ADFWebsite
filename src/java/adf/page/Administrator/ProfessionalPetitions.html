@@ -1,0 +1,23 @@
+<wicket:extend>
+    <h1 style="text-align: center;"> Petitions for Professional Login </h1>
+    <table style="table-layout: auto; border: 2px blue;">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Middlename</th>
+                <th>Surname</th>
+                <th>See Entire Petition Form</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr wicket:id="petitions">
+                <td wicket:id="date">[Date]</td>
+                <td wicket:id="name">[name]</td>
+                <td wicket:id="middleName">[middleName]</td>
+                <td wicket:id="surname">[surname]</td>
+                <td><button wicket:id="seePetition">Go to Petition Form</button></td>
+            </tr>
+        </tbody>
+    </table>
+</wicket:extend>

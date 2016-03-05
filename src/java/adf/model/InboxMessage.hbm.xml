@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- ID: 1054920 -->
+<hibernate-mapping package="adf.model">
+  <class name="InboxMessage" table="inboxMessage">
+    <id column="inboxMessage_id" name="id">
+      <generator class="sequence"/>
+    </id>
+    <version column="version" name="version"/>
+    <property column="message" name="message" not-null="true"/>
+    <property column="date" name="date" not-null="true"/>
+    <many-to-one cascade="save-update" class="AdfUser" column="sender" lazy="false" name="sender"/>
+    <many-to-one cascade="save-update" class="AdfUser" column="receiver" name="receiver"/>
+  </class>
+</hibernate-mapping>

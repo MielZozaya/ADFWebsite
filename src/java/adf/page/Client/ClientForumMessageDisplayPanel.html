@@ -1,0 +1,48 @@
+<wicket:panel>
+    <!-- Message Display-->
+    <h3 class="floatleft"><span wicket:id="title"/></h3>
+    <div class="clearfloat"/>
+    <h4 >Author: <span wicket:id="author"/>  Date: <span wicket:id="date"/></h4>
+    <span wicket:id="body" style="border: thin solid;margin: 5%;"/>
+    
+
+    <!-- Message edition From -->
+    <form style="width: 90%; background-color: #6699ff; border: thin solid inherit;margin: 5%;"wicket:id="MessageEdition">
+        <h4><span wicket:id="editionTitle"/></h4>
+        <span wicket:id="editionfeedback"/>
+        <p style="font-weight: bold;">Title:</p><input style="width: 90%;margin-left: 5%;" wicket:id="editionMessageTitle"/>
+        <p style="font-weight: bold;">Body:</p><textarea style="width: 90%;margin-left: 5%;" wicket:id="editionMessageBody" rows="7" cols="20"></textarea>
+        <input type="submit" value="Edit"/>
+    </form>
+
+    <!-- Category edition Form -->
+    <h4><span wicket:id="categoryEditionTitle"/></h4>
+    <ul>
+        <li wicket:id="categories">
+            <span wicket:id="categoryName"/>
+            <button wicket:id="deleteCategory">
+                delete
+            </button>
+        </li>
+    </ul>
+    <form style="padding-right: 1em;" wicket:id="CategoryEdition">
+        <span wicket:id="categoryEditionFeedback"/>
+        <select wicket:id="categoryList"></select>
+        <input type="submit" value="Add"/>
+    </form>
+
+    <!-- Replies tree-->
+    <h3 ><span wicket:id="threadsHeader"/></h3>
+    <span wicket:id="loadMessages"/>
+
+    <!-- New Reply Form-->
+    <div style="width: 90%; background-color: #6699ff; border: thin solid inherit;margin: 5%;">
+        <span wicket:id="newMessage"/>
+        <span wicket:id="feedback"/>
+        <form wicket:id="Message">
+            <p style="font-weight: bold;">Title:</p><input style="width: 90%;margin-left: 5%;" wicket:id="newMessageTitle"/>
+            <p style="font-weight: bold;">Body:</p><textarea style="width: 90%;margin-left: 5%;" wicket:id="newMessageBody" rows="7" cols="20"></textarea>
+            <input type="submit" value="Send"/>
+        </form>
+    </div>
+</wicket:panel>

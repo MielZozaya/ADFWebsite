@@ -1,0 +1,14 @@
+<wicket:panel>
+            <h3><span wicket:id="threadsHeader"/></h3>
+            <span wicket:id="loadMessages"/>
+            <div style="width: 90%; background-color: #6699ff; border: thin solid inherit;margin: 5%;">
+                <span wicket:id="newMessage"/>
+                <span wicket:id="feedback"/>
+                <form wicket:id="Message">
+                    <p style="font-weight: bold;">Title:</p><input style="width: 90%;margin-left: 5%" wicket:id="newMessageTitle"/>
+                    <p style="font-weight: bold;">Body:</p><textarea style="width: 90%; margin-left: 5%" wicket:id="newMessageBody" rows="7" cols="20"></textarea>
+
+                    <input type="submit" value="Send"/>
+                </form>
+            </div>
+</wicket:panel>

@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+       ">
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com"/>
+        <property name="username" value="adfTest.no.reply@gmail.com"/>
+        <property name="password" value="koolIbanga"/>
+        <property name="port" value="587"/>
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="passwordGenerator" class="com.Ostermiller.util.RandPass"/>
+
+
+    <!--    <bean id="password" class="adf.Main" factory-method="getPassword"/>  -->
+<!--        <property name="password" ref="password"/>  -->
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/ADFWebsite"/>
+        <property name="username" value="user"/>
+        <property name="password" value="password"/>
+        <property name="maxActive" value="4"/>
+        <property name="maxIdle" value="4"/>
+        <property name="minIdle" value="2"/>
+        <property name="maxWait" value="-1"/>
+        <property name="initialSize" value="2"/>
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxOpenPreparedStatements" value="100"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="testOnReturn" value="false"/>
+        <property name="testWhileIdle" value="false"/>
+        <property name="validationQuery" value="SELECT 1+1"/>
+    </bean>
+
+
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>adf/model/AdfUser.hbm.xml</value>
+                <value>adf/model/ADFProgramAnswers.hbm.xml</value>
+                <value>adf/model/ADFProgramFeedback.hbm.xml</value>
+                <value>adf/model/Address.hbm.xml</value>
+                <value>adf/model/Role.hbm.xml</value>
+                <value>adf/model/ClientForumMessage.hbm.xml</value>
+                <value>adf/model/ClientCategory.hbm.xml</value>
+                <value>adf/model/InboxMessage.hbm.xml</value>
+                <value>adf/model/WebsiteFeedback.hbm.xml</value>
+                <value>adf/model/ExerciseAnswers/ExerciseAns.hbm.xml</value>
+                <value>adf/model/ViewHistory.hbm.xml</value>
+                <value>adf/model/Demographics.hbm.xml</value>
+                <value>adf/model/ProfessionalLoginPetitionForm.hbm.xml</value>
+                <value>adf/model/Tool.hbm.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="databaseDAO" class="adf.dao.hibernate.DatabaseDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+        <property name="lsfb" ref="&amp;sessionFactory"/>
+    </bean>
+
+    <bean id="adfProgramAnswersDAO" class="adf.dao.hibernate.ADFProgramAnswersDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+    <bean id="adfProgramFeedbackDAO" class="adf.dao.hibernate.ADFProgramFeedbackDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+    <bean id="roleDAO" class="adf.dao.hibernate.RoleDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+    <bean id="AdfUserDAO" class="adf.dao.hibernate.AdfUserDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+    <bean id="clientForumMessageDAO" class="adf.dao.hibernate.ClientForumMessageDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+    <bean id="clientCategoryDAO" class="adf.dao.hibernate.ClientCategoryDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+    <bean id="inboxMessageDAO" class="adf.dao.hibernate.InboxMessageDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+    <bean id="websiteFeedbackDAO" class="adf.dao.hibernate.WebsiteFeedbackDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+    <bean id="viewHistoryDAO" class="adf.dao.hibernate.ViewHistoryDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+
+    <bean id="ProfessionalLoginPetitionFormDAO" class="adf.dao.hibernate.ProfessionalLoginPetitionFormDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+
+    <bean id="ToolDAO" class="adf.dao.hibernate.ToolDAOImpl">
+        <property name="hibernateTemplate" ref="hibernateTemplate"/>
+    </bean>
+
+    <!-- this is the adf.service object that we want to make transactional -->
+    <bean id="adfService" class="adf.service.AdfServiceImpl">
+        <constructor-arg ref="databaseDAO"/>
+        <constructor-arg ref="adfProgramAnswersDAO"/>
+        <constructor-arg ref="adfProgramFeedbackDAO"/>
+        <constructor-arg ref="roleDAO"/>
+        <constructor-arg ref="AdfUserDAO"/>
+        <constructor-arg ref="clientCategoryDAO"/>
+        <constructor-arg ref="clientForumMessageDAO"/>
+        <constructor-arg ref="inboxMessageDAO"/>
+        <constructor-arg ref="websiteFeedbackDAO"/>
+        <constructor-arg ref="viewHistoryDAO"/>
+        <constructor-arg ref="ProfessionalLoginPetitionFormDAO"/>
+        <constructor-arg ref="ToolDAO"/>
+        <constructor-arg ref="mailSender"/>
+        <constructor-arg ref="passwordGenerator"/>
+        <constructor-arg ref="authenticationManager"/>
+        <constructor-arg ref="passwordEncoder"/>
+    </bean>
+
+    <!--      Propagation options: (default is REQUIRED)
+    "REQUIRED": must run in a transaction, will use current one, start new one if there is none
+        "SUPPORTS": does not require a transaction, will use one if it exists
+        "MANDATORY": must run in a transaction, will throw exception if none exists
+        "REQUIRES_NEW": must run it its own transaction: will start one, and suspend any existing one if necessary
+        "NOT_SUPPORTED": should NOT run in a transaction, will suspend any existing one if necessary
+        "NEVER": should NOT run in a transaction, will throw exception if one exists
+        "NESTED": Should be run in a new nested transaction if a transaction exists, otherwise, works as "REQUIRED"
+    -->
+    <!-- the transactional advice (what 'happens'; see the <aop:advisor/> bean below) -->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <!-- the transactional semantics... -->
+        <tx:attributes>
+            <tx:method name="sendEmail" read-only="true" propagation="SUPPORTS"/>
+            <!-- all methods starting with 'get' are read-only -->
+            <tx:method name="get*" read-only="true" propagation="REQUIRED"/>
+            <!--Change
+            <tx:method name="demoteUser" propagation="REQUIRES_NEW"/>
+            <tx:method name="promoteUser" propagation="REQUIRES_NEW"/>
+            <tx:method name=""
+            -->
+            <!-- other methods use the default transaction settings (see below) -->
+            <tx:method name="*" propagation="REQUIRES_NEW"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+
+    <aop:config>
+        <aop:pointcut id="adfServiceOperation" expression="execution(* adf.service.*.*(..))"/>
+        <aop:advisor id="security" pointcut-ref="adfServiceOperation" advice-ref="adfServiceSecurity" order="1"/>
+        <aop:advisor id="transactions" pointcut-ref="adfServiceOperation" advice-ref="txAdvice" order="3"/>
+
+        <aop:aspect id="accessAspect" ref="securityAspect" order="2">
+            <aop:pointcut id="personalOperation" expression="execution(* adf.service.*.getPersonal*(..)) and args(lecturer,..)"/>
+            <aop:before pointcut-ref="personalOperation" method="doAccessCheck" arg-names="lecturer"/>
+        </aop:aspect>
+    </aop:config>
+
+    <bean id="securityAspect" class="adf.service.SecurityAspect"/>
+
+
+    <bean id="wicketApplication" class="adf.page.AdfApplication">
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="adfService" ref="adfService"/>
+    </bean>
+
+    <bean id="filterChainProxy" class="org.acegisecurity.util.FilterChainProxy">
+        <property name="filterInvocationDefinitionSource">
+            <value>
+                CONVERT_URL_TO_LOWERCASE_BEFORE_COMPARISON
+                PATTERN_TYPE_APACHE_ANT
+                /**=httpSessionContextIntegrationFilter
+            </value>
+        </property>
+    </bean>
+
+    <!-- Maintains security context between requests (using the session). -->
+    <bean id="httpSessionContextIntegrationFilter"
+          class="org.acegisecurity.context.HttpSessionContextIntegrationFilter">
+        <property name="forceEagerSessionCreation" value="true"/>
+    </bean>
+
+
+    <bean id="authenticationManager" class="org.acegisecurity.providers.ProviderManager">
+        <property name="providers">
+            <list>
+                <ref local="daoAuthenticationProvider"/>
+                <ref local="anonymousAuthenticationProvider"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="passwordEncoder" class="org.acegisecurity.providers.encoding.ShaPasswordEncoder"/>
+
+    <bean id="daoAuthenticationProvider" class="org.acegisecurity.providers.dao.DaoAuthenticationProvider">
+        <property name="userDetailsService" ref="AdfUserDAO"/>
+        <property name="userCache" ref="userCache"/>
+        <property name="passwordEncoder" ref="passwordEncoder"/>
+        <property name="saltSource">
+            <bean class="org.acegisecurity.providers.dao.salt.ReflectionSaltSource">
+                <property name="userPropertyToUse" value="getUsername"/>
+            </bean>
+        </property>
+
+    </bean>
+
+    <bean id="userCache" class="org.acegisecurity.providers.dao.cache.EhCacheBasedUserCache">
+        <property name="cache">
+            <bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+                <property name="cacheManager">
+                    <bean class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"/>
+                </property>
+                <property name="cacheName" value="userCache"/>
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="anonymousAuthenticationProvider"
+          class="org.acegisecurity.providers.anonymous.AnonymousAuthenticationProvider">
+        <property name="key" value="anonymous"/>
+    </bean>
+
+    <bean id="roleVoter" class="org.acegisecurity.vote.RoleVoter">
+        <property name="rolePrefix" value="ROLE_"/>
+    </bean>
+
+    <bean id="accessDecisionManager" class="org.acegisecurity.vote.AffirmativeBased">
+        <property name="allowIfAllAbstainDecisions" value="false"/>
+        <property name="decisionVoters">
+            <list>
+                <ref local="roleVoter"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- adfServiceSecurity -->
+
+    <bean id="adfServiceSecurity"
+          class="org.acegisecurity.intercept.method.aopalliance.MethodSecurityInterceptor">
+        <property name="authenticationManager" ref="authenticationManager"/>
+        <property name="accessDecisionManager" ref="accessDecisionManager"/>
+        <property name="objectDefinitionSource">
+            <value>
+                adf.service.AdfService.getClientCategories=ROLE_admin,ROLE_client
+                adf.service.AdfService.getClientForumMessagesByCategory=ROLE_admin,ROLE_client
+                adf.service.AdfService.addClientForumMessage=ROLE_client
+                adf.service.AdfService.getClientForumMessage=ROLE_admin,ROLE_client
+                adf.service.AdfService.acceptProfessionalLoginPetition=ROLE_admin
+                adf.service.AdfService.addADFProgramAnswer=ROLE_admin,ROLE_client,ROLE_professional
+                adf.service.AdfService.addCategoryToClientForumMessage=ROLE_admin
+                adf.service.AdfService.addClientCategory=ROLE_admin
+                adf.service.AdfService.addClientForumMessage=ROLE_admin,ROLE_client
+                adf.service.AdfService.addClientForumMessageReply=ROLE_admin,ROLE_client
+                adf.service.AdfService.addInboxMessage=ROLE_admin,ROLE_client,ROLE_professional
+                adf.service.AdfService.addTool=ROLE_admin
+                adf.service.AdfService.addViewHistory=ROLE_client,ROLE_professional
+                adf.service.AdfService.changePassword=ROLE_admin,ROLE_client,ROLE_professional
+                adf.service.AdfService.declineProfessionalLoginPetition=ROLE_admin
+                adf.service.AdfService.deleteCategoryFromClientForumMessage=ROLE_admin
+                adf.service.AdfService.deleteClientCategory=ROLE_admin
+                adf.service.AdfService.deleteInboxMessage=ROLE_admin,ROLE_client,ROLE_professional
+                adf.service.AdfService.deleteTool=ROLE_admin
+                adf.service.AdfService.editClientForumMessage=ROLE_admin
+                adf.service.AdfService.getADFProgramAnswers=ROLE_admin,ROLE_client,ROLE_professional
+                adf.service.AdfService.getAllADFProgramAnswers=ROLE_admin,ROLE_client,ROLE_professional
+                adf.service.AdfService.getAdfUser=ROLE_admin,ROLE_client,ROLE_professional
+                adf.service.AdfService.getClientForumMessage=ROLE_admin,ROLE_client
+                adf.service.AdfService.getClientCategories=ROLE_admin,ROLE_client
+                adf.service.AdfService.getClientForumMessagesByCategory=ROLE_admin,ROLE_client
+                adf.service.AdfService.getClientsForProfessional=ROLE_admin,ROLE_professional
+                adf.service.AdfService.getProfessionalLoginPetitionForms=ROLE_admin
+                adf.service.AdfService.getInboxMessages=ROLE_admin,ROLE_client,ROLE_professional
+                adf.service.AdfService.getTools=ROLE_admin,ROLE_professional
+                adf.service.AdfService.getViewHistories=ROLE_admin
+                adf.service.AdfService.sendInvitation=ROLE_professional
+                adf.service.AdfService.updateAdfUser=ROLE_admin,ROLE_client,ROLE_professional
+
+            </value>
+        </property>
+    </bean>
+</beans>

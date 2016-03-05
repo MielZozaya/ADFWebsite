@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:wicket="http://wicket.apache.org/"
+    xml:lang="en"
+    lang="en">
+
+    <head>
+        <title>Inbox</title>
+    </head>
+    <body>
+        <span wicket:id="adfBorder">
+            <h1 style="text-align: center;"><span wicket:id="noMessages"/></h1>
+            <span wicket:id="messageListContainer">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sender</th>
+                            <th>Message</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr wicket:id="messages">
+                            <td width="10%" wicket:id="sender">[sender]</td>
+                            <td width="65%" wicket:id="message">[message]</td>
+                            <td width="15%" wicket:id="date">[date]</td>
+                            <td width="10%"><button wicket:id="delete">delete</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </span>
+            <span wicket:id="professionalContactContainer">
+                <h4> Supervisor Contact </h4>
+                <p> For sending a message to your supervisor <a href="#" wicket:id="professionalContact">click here</a></p>
+            </span>
+        </span>
+    </body>
+</html>
